@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  database:
+    image: cockroachdb/cockroach
+    restart: always
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    environment:
+      COCKROACH_DATABASE: movatic
+      COCKROACH_USER: movatic_backend
+      COCKROACH_PASSWORD: aVeryStrongPassword
+    volumes:
+      - ./docker-cockroach-init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: start-single-node
