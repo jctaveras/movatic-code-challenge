@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, Response, current_app
+from flask import Blueprint, jsonify, Response, current_app, abort
 from psycopg import Connection
 
 from movatic.queries import *
@@ -31,6 +31,6 @@ def get_station_status(station_id: str) -> Response:
         cursor.close()
 
         if data is None:
-            return jsonify({"data": {"message": "Station Not Found", "status": 404}})
+            abort(404, description="Station Not Found")
         
         return jsonify({"data": data})    
