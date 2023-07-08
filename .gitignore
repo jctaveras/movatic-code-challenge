@@ -1,0 +1,10 @@
+# Remove .vscode config directory
+.vscode/
+
+# Remove unnecessary python cache
+*/**/__pycache__/
+
+# Remove Virtual Environment Directory
+web-app/
+
+.env
